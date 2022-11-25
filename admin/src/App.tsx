@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Routes , Route} from 'react-router-dom'
+import AddBus from './Pages/AddBus/AddBus';
+import Bus from './Pages/Bus/Bus';
+import BusDetails from './Pages/BusDetails/BusDetails';
+import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
+import Users from './Pages/Users/Users';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/bus' element={<Bus/>}/>
+        <Route path='/bus/:busid' element={<BusDetails/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/users' element={<Users/>}/>
+        <Route path='/bus/add' element={<AddBus/>}/>
+      </Routes>
+    </BrowserRouter>
+  </>
 }
 
 export default App;

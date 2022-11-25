@@ -9,6 +9,7 @@ export interface user_type {
   name : string,
   email : string,
   password: string
+  isBlocked : boolean
 }
 
 
@@ -20,6 +21,7 @@ const user_schema = new mongoose.Schema({
     unique : true,
   },
   password : String,
+  isBlocked : Boolean
 })
 
 export const user_model = mongoose.model("user_schema", user_schema, USER_COLLECTION)

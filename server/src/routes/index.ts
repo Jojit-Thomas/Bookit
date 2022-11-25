@@ -1,5 +1,6 @@
 // var express = require('express');
 import express from "express";
+import bus from "../controllers/bus";
 import { verify } from "../middlewares/auth";
 // const { verify } = require('../middlewares/auth');
 var router = express.Router();
@@ -7,9 +8,15 @@ var router = express.Router();
 
 
 /* GET home page. */
-router.get('/',verify, function(req , res, next) {
-  console.log(req.user)
-  res.status(200).json("This is a sample application");
-});
+router.get("/", function(req, res) {
+  console.log("api page")
+  res.status(200).json("Success Home page")
+})
+
+router.get('/bus',verify, bus.allBus);
+
+router.get('/bus/:id',verify, bus.busDetails);
+
+router.post("/bus/book", bus.bookSeat)
 
 export default router;

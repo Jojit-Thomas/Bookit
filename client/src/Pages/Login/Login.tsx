@@ -28,9 +28,11 @@ function Login() {
         console.log("success : ", result);
         localStorage.setItem("accessToken", result.data.accessToken);
         localStorage.setItem("refreshToken", result.data.refreshToken);
+        localStorage.setItem("user", result.data.user);
         navigate('/')
       })
       .catch((error) => {
+        console.log(error)
         console.error("error : ", error.response.data);
         setError(error.response.data)
       });

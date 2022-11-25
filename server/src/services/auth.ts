@@ -18,11 +18,4 @@ export default {
       })
     })
   },
-  getUserByEmail : (email: String) => {
-    return new Promise((resolve, reject) => {
-      user_model.findOne({email : email}).then((user: any) => {
-        user ? resolve(user) : reject(createHttpError.NotFound("Email or password is wrong"))
-      })
-    })
-  }
 }

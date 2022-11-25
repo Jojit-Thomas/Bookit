@@ -19,7 +19,12 @@ import mongoose from "mongoose";
 // const cors = require('cors');
 import cors from "cors";
 
-import dotenv from "dotenv/config"
+
+import {connectRedis} from './config/redis'
+const client = connectRedis();
+
+import dotenv from "dotenv"
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 mongoose.connect(`mongodb+srv://bookit:${process.env.MONGO_PASSWORD}@cluster0.glsi7xa.mongodb.net/?retryWrites=true&w=majority`, {dbName : "bookit"});
 
@@ -38,6 +43,12 @@ mongoose.connection.on("error", (err) => {
 mongoose.connection.on("disconnected", () => {
   console.log("Mongoose Connection is Disconnected.");
 });
+
+process.on("SIGINT", () => {
+  client.quit()
+  mongoose.connection.close()
+})
+
 
 const app = express();
 const corsOptions = {
