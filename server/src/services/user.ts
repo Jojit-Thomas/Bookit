@@ -1,3 +1,4 @@
+import createHttpError from "http-errors"
 import { user_model, user_type } from "../models/user_model"
 
 const fetchAllUsers = (): Promise<user_type> => {

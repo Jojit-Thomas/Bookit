@@ -3,8 +3,8 @@ POST http://localhost:4000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "stanlybaby@gmail.com",
-  "password": "stanlybaby"
+  "email": "jojitthomass@gmail.com",
+  "password": "jojitthomas"
 }
 
 ###
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
   "name": "jojit thomas",
-  "email": "jojitthomas@gmail.com",
+  "email": "jojitthomass@gmail.com",
   "password": "jojitthomas"
 }
 

@@ -8,6 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea } from '@mui/material';
 import busLogo from "../../images/bus.webp"
+import Header from '../../Components/Header/Header';
 
 function Home() {
   let navigate = useNavigate()
@@ -37,15 +38,7 @@ function Home() {
   //     navigate('/login')
   //   })
   // }, [])
-  let logout = () => {
-    let refreshToken = localStorage.getItem("refreshToken")
-    axios.delete("/auth/logout", {
-      data: {
-        refreshToken
-      }
-    }).then(() => navigate("/login"))
-
-  }
+  
 
   const handleClick = (id : String) => {
     navigate(`/bus/${id}`)
@@ -55,6 +48,7 @@ function Home() {
   // useEffect(() => setIsLoading(false),[])
 
   return <>
+  <Header/>
     <DataBox>
       {
         buses.map((bus, idx) => {
@@ -87,7 +81,6 @@ function Home() {
         })
       }
     </DataBox>
-    <Button onClick={() => logout()}>Logout</Button>
   </>
 }
 
